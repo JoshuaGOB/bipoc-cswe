@@ -24,8 +24,7 @@
     <div class="container-fluid">
 <p>
 
-  There are various ways to interact with this database. If you’d like to scroll through the full list of author names, you can use the arrows at the bottom right corner of the table. Additionally, you are able to search by author name and by keyword (the Research Interests/Focus). A tagging structure was added to group authors into broad categories. You can browse these in the Taxonomy Tags box.
-  .</p>
+  </p>
       
       <div id='table-container'></div>
 
@@ -57,18 +56,24 @@
           return "";
       }
     
-      CsvToHtmlTable.init({
-        csv_path: 'data/Live-BIPOC_Authors_in_SW.csv', // Ensure '.csv' extension is included
-        element: 'table-container', 
-        allow_download: false,
-        csv_options: { separator: ',', delimiter: '"' },
-        datatables_options: { "paging": false, "order": [[2, "desc"]] },
-        custom_formatting: [
-          [2, format_link], // Apply `format_link` to the third column
-          [3, format_link], // Apply `format_link` to the fourth column
-          [4, format_link]  // Apply `format_link` to the fifth column
-        ]
-      });
+CsvToHtmlTable.init({
+  csv_path: 'data/Live-BIPOC_Authors_in_SW.csv',
+  element: 'table-container', 
+  allow_download: false,
+  csv_options: { separator: ',', delimiter: '"' },
+  datatables_options: { 
+    paging: false, 
+    order: [[2, "desc"]],
+    createdRow: function(row, data, dataIndex) {
+      // Optionally add custom row styles here if needed
+    }
+  },
+  custom_formatting: [
+    [2, format_link], // Apply `format_link` to the third column
+    [3, format_link], // Apply `format_link` to the fourth column
+    [4, format_link]  // Apply `format_link` to the fifth column
+  ]
+});
     </script>
   </body>
 </html>
