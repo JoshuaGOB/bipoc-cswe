@@ -56,19 +56,24 @@ div.dataTables_paginate ul.pagination {
 }
 
 
-table.dataTable td,
-table.dataTable th {
-	-webkit-box-sizing: content-box;
-	-moz-box-sizing: content-box;
-	box-sizing: content-box;
+table.dataTable {
+  clear: both;
+  margin-top: 6px !important;
+  margin-bottom: 6px !important;
+  max-width: none !important;
+
+  /* Added for uniform column widths */
+  table-layout: fixed;
+  width: 100%; /* Ensures the table spans the full container width */
 }
 
-
-table.dataTable {
-	clear: both;
-	margin-top: 6px !important;
-	margin-bottom: 6px !important;
-	max-width: none !important;
+table.dataTable th,
+table.dataTable td {
+  width: auto; /* Adjust this if you want specific widths, e.g., 20% */
+  white-space: nowrap; /* Prevents text wrapping for consistent row heights */
+  overflow: hidden; /* Hides overflow text */
+  text-overflow: ellipsis; /* Adds "..." for truncated text */
+  text-align: center; /* Centers text in each cell */
 }
 
 table.dataTable thead .sorting,
