@@ -5,9 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>IDRH Index of Videos and Talks</title>
-    <meta name="author" content="Derek Eder">
-    <meta content="Display any CSV file as a searchable, filterable, pretty HTML table" />
+    <title>Amplifying BIPOC Voices</title>
+    <meta name="author" content="">
+    <meta content="" />
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -24,7 +24,8 @@
     <div class="container-fluid">
 <p>
 
-The table below provides links to many of the talks, workshops, interviews we have hosted at IDRH since 2011. Click on the arrows in each column heading to reorder the table, or use the search box to filter for specific content.</p>
+  There are various ways to interact with this database. If you’d like to scroll through the full list of author names, you can use the arrows at the bottom right corner of the table. Additionally, you are able to search by author name and by keyword (the Research Interests/Focus). A tagging structure was added to group authors into broad categories. You can browse these in the Taxonomy Tags box.
+  .</p>
       
       <div id='table-container'></div>
 
@@ -49,21 +50,24 @@ The table below provides links to many of the talks, workshops, interviews we ha
 
 
     <script type="text/javascript">
-      function format_link(link){
+      function format_link(link) {
         if (link)
           return "<a href='" + link + "' target='_blank'>" + link + "</a>";
         else
           return "";
       }
-
+    
       CsvToHtmlTable.init({
-        csv_path: 'data/finding-aid.csv',
+        csv_path: 'data/Live-BIPOC_Authors_in_SW.csv', // Ensure '.csv' extension is included
         element: 'table-container', 
         allow_download: false,
-        csv_options: {separator: ',', delimiter: '"'},
-        datatables_options: {"paging": false, "order":[[2,"desc"]]},
-        custom_formatting: [[4, format_link]]
-       
+        csv_options: { separator: ',', delimiter: '"' },
+        datatables_options: { "paging": false, "order": [[2, "desc"]] },
+        custom_formatting: [
+          [2, format_link], // Apply `format_link` to the third column
+          [3, format_link], // Apply `format_link` to the fourth column
+          [4, format_link]  // Apply `format_link` to the fifth column
+        ]
       });
     </script>
   </body>
